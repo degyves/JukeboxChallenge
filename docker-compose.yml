@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  web:
+    build:
+      context: ./web
+    networks:
+      - appnet
+
+  proxy:
+    build:
+      context: ./proxy
+    ports:
+      - "1080:80"
+    depends_on:
+      - web
+
+  redis:
+    image: redis:7

@@ -1,0 +1,31 @@
+# Global ignores
+bin/
+obj/
+**/bin/
+**/obj/
+
+# Node artifacts
+web/node_modules/
+web/dist/
+stream/node_modules/
+stream/.npmrc
+
+# Environment files
+.env
+.env.local
+!.env.example
+
+# Logs
+**/logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Coverage
+coverage/
+
+# VS Code
+.vscode/
+
+web-modern/
