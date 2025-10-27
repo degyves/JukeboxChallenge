@@ -17,9 +17,29 @@ services:
       - web
     networks:
       - appnet
-      
+
   redis:
     image: redis:7
+
+  api:
+    build:
+      context: ./api
+    networks:
+      - appnet
+    ports:
+      - "8000:29245"
+    depends_on:
+      - redis
+  stream:
+    build:
+      context: ./stream
+    networks:
+      - appnet
+    ports:
+      - "4000:4000"
+    depends_on:
+      - api
+
 
 networks:
   appnet:
