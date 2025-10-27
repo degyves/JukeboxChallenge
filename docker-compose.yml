@@ -5,6 +5,8 @@ services:
       context: ./web
     networks:
       - appnet
+    ports:
+      - "80:80"
 
   proxy:
     build:
@@ -13,7 +15,9 @@ services:
       - "1080:80"
     depends_on:
       - web
-
+    networks:
+      - appnet
+      
   redis:
     image: redis:7
 
