@@ -1,17 +1,15 @@
 # Use the official Nginx image as the base image
-FROM node:18-alpine
+FROM node:20-alpine
 
-# Copy the custom Nginx configuration file to the container
-COPY src/server.js /server.js
-COPY package.json /package.json
+WORKDIR /app
 
-# Copy any static files or assets to the default Nginx directory
-# COPY ./public /usr/share/nginx/html
+COPY package.json ./
 
-# Expose the default Nginx port
-EXPOSE 80
+RUN npm install
 
-CMD ["npm", "install"]
+COPY src/server.js ./
+
+EXPOSE 4000
 
 CMD ["node", "server.js"]
 
